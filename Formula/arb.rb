@@ -1,8 +1,8 @@
 class Arb < Formula
   desc "C library for arbitrary-precision floating-point ball arithmetic"
   homepage "http://fredrikj.net/arb/index.html"
-  url "https://github.com/fredrik-johansson/arb/archive/2.11.1.tar.gz"
-  sha256 "de37f008fd154bd4b9c3fd7f5b0f13928cd109358d01959a98245fe33d08bf63"
+  url "https://github.com/fredrik-johansson/arb/archive/2.16.0.tar.gz"
+  sha256 "ad5cff857657acd673088b95f30ac166f039ed4699fc1fa974d368b6f1d99c0e"
   head "https://github.com/fredrik-johansson/arb.git"
 
   bottle do
