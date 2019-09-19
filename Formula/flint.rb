@@ -17,11 +17,14 @@ class Flint < Formula
 
   depends_on "gmp"
   depends_on "mpfr"
+  depends_on "ntl"
 
   def install
+    ENV.append "CXXFLAGS", "-std=c++11"
     system "./configure", "--prefix=#{prefix}",
                           "--with-gmp=#{Formula["gmp"].opt_prefix}",
                           "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+                          "--with-ntl=#{Formula["ntl"].opt_prefix}",
                           "--disable-tls"
     system "make"
     system "make", "install"
