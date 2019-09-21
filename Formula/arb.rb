@@ -33,7 +33,8 @@ class Arb < Formula
     system "./configure", "--prefix=#{prefix}",
                           "--with-gmp=#{Formula["gmp"].opt_prefix}",
                           "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                          "--with-flint=#{Formula["flint"].opt_prefix}"
+                          "--with-flint=#{Formula["flint"].opt_prefix}",
+                          "--disable-tls"
     system "make"
     system "make", "install"
     system "make", "check" if build.with? "test"
