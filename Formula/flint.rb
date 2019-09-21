@@ -24,8 +24,7 @@ class Flint < Formula
     system "./configure", "--prefix=#{prefix}",
                           "--with-gmp=#{Formula["gmp"].opt_prefix}",
                           "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                          "--with-ntl=#{Formula["ntl"].opt_prefix}",
-                          "--disable-tls"
+                          "--with-ntl=#{Formula["ntl"].opt_prefix}"
     system "make"
     system "make", "install"
   end
