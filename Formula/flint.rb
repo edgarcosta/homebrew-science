@@ -15,10 +15,20 @@ class Flint < Formula
 
   def install
     ENV.append "CXXFLAGS", "-std=c++11"
-    system "./configure", "--prefix=#{prefix}",
-                          "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                          "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                          "--with-ntl=#{Formula["ntl"].opt_prefix}"
+    if OS.mac?
+      system "./configure", "--prefix=#{prefix}",
+                            "--with-gmp=#{Formula["gmp"].opt_prefix}",
+                            "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+                            "--with-ntl=#{Formula["ntl"].opt_prefix}",
+                            # OSX does not provide full correct support for TLS
+                            "--disable-tls"
+    else
+      system "./configure", "--prefix=#{prefix}",
+                            "--with-gmp=#{Formula["gmp"].opt_prefix}",
+                            "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+                            "--with-ntl=#{Formula["ntl"].opt_prefix}",
+    end
+
     system "make"
     system "make", "install"
   end
