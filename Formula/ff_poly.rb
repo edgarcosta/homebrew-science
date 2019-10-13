@@ -44,6 +44,7 @@ index b058da1..4f8c4f0 100644
  	mkdir -p $(INSTALL_ROOT)/include/ff_poly
 +	cp -v ff_poly.h $(INSTALL_ROOT)/include
  	cp -v $(HEADERS) $(INSTALL_ROOT)/include/ff_poly
+ 	mkdir -p $(INSTALL_ROOT)/include/lib
  	cp -v libff_poly.a $(INSTALL_ROOT)/lib
  	
 
