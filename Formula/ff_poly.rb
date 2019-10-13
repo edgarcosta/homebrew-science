@@ -26,7 +26,8 @@ index b058da1..4f8c4f0 100644
 -CC = gcc
 +# CC = gcc
  CFLAGS = -O3 -fomit-frame-pointer -funroll-loops -m64 -pedantic -std=gnu99
- LDFLAGS = -static
+-LDFLAGS = -static
++LDFLAGS = # -static
 -INCLUDES = -I/usr/local/include
 +INCLUDES = # -I/usr/local/include
  LIBS = -lgmp -lm
