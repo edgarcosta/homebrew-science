@@ -8,20 +8,18 @@ class FfPoly < Formula
 
   depends_on "gmp"
 
+  patch :DATA
+
   def install
     system "make"
-    ENV.append "INSTALL_ROOT", "#{prefix}"
-    system "make", "install"
+    system "make", "install", "INSTALL_ROOT=#{prefix}"
   end
 
-  test do
-    system "false"
-  end
 
 end
 __END__
 diff --git a/makefile b/makefile
-index b058da1..3f16a18 100644
+index b058da1..4f8c4f0 100644
 --- a/makefile
 +++ b/makefile
 @@ -1,9 +1,9 @@
@@ -37,4 +35,14 @@ index b058da1..3f16a18 100644
  
  HEADERS = asm.h ff.h ffmontgomery64.h ff2k.h ffext.h ffpolyfromroots.h ffpolybig.h ffpolysmall.h ffpoly.h cstd.h ntutil.h polyparse.h
  OBJECTS = ff.o ff2k.o  ffext.o  ffpolyfromroots.o ffpolysmall.o ffpoly_small.o polyparse.o
+@@ -15,8 +15,8 @@ clean:
+ 	rm -f libff_poly.a
+ 	
+ install: all
+-	cp -v ff_poly.h $(INSTALL_ROOT)/include
+ 	mkdir -p $(INSTALL_ROOT)/include/ff_poly
++	cp -v ff_poly.h $(INSTALL_ROOT)/include
+ 	cp -v $(HEADERS) $(INSTALL_ROOT)/include/ff_poly
+ 	cp -v libff_poly.a $(INSTALL_ROOT)/lib
+ 	
 
