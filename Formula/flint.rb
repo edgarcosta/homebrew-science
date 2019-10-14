@@ -14,6 +14,7 @@ class Flint < Formula
   depends_on "ntl"
 
   def install
+    ENV.append "CCFLAGS", "-std=c11"
     ENV.append "CXXFLAGS", "-std=c++11"
     if OS.mac?
       system "./configure", "--prefix=#{prefix}",
@@ -62,7 +63,8 @@ class Flint < Formula
           return EXIT_SUCCESS;
       }
     EOS
-    system ENV.cc, "test.c", "-lgmp", "-lflint", "-o", "test"
+    gmp = Formula["gmp"]
+    system ENV.cc, "test.c", "-L#{gmp.opt_lib}", "-lgmp", "-L#{lib}","-lflint", "-o", "test"
     system "./test"
   end
 end

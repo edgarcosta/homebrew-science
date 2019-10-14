@@ -21,6 +21,7 @@ class Arb < Formula
       end
     end
 
+    ENV.append "CCFLAGS", "-std=c11"
     if OS.mac?
       system "./configure", "--prefix=#{prefix}",
                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
