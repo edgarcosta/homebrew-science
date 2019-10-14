@@ -20,17 +20,17 @@ class Flint < Formula
                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
                             "--with-ntl=#{Formula["ntl"].opt_prefix}",
-                            # OSX does not provide full correct support for TLS
-                            "--disable-tls"
+                            "--disable-tls" # clang doesn't fully support TLS
     else
       system "./configure", "--prefix=#{prefix}",
                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                            "--with-ntl=#{Formula["ntl"].opt_prefix}",
+                            "--with-ntl=#{Formula["ntl"].opt_prefix}"
     end
 
     system "make"
     system "make", "install"
+    system "make", "check" if build.with? "test"
   end
 
   test do

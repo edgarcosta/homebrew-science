@@ -29,19 +29,17 @@ class Arb < Formula
       end
     end
 
-    ENV.prepend "CFLAGS", "-I#{Formula["flint"].opt_include}/flint"
     if OS.mac?
       system "./configure", "--prefix=#{prefix}",
                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
                             "--with-flint=#{Formula["flint"].opt_prefix}",
-                            # OSX does not provide full correct support for TLS
-                            "--disable-tls"
+                            "--disable-tls" # clang doesn't fully support TLS
     else
       system "./configure", "--prefix=#{prefix}",
                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                            "--with-flint=#{Formula["flint"].opt_prefix}",
+                            "--with-flint=#{Formula["flint"].opt_prefix}"
     end
 
     system "make"
