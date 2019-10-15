@@ -8,6 +8,7 @@ class Flint < Formula
   revision 2
   head "https://github.com/wbhart/flint2.git", :branch => "trunk"
 
+  option "without-test", "Disable build-time checking (not recommended)"
 
   depends_on "gmp"
   depends_on "mpfr"
@@ -16,18 +17,10 @@ class Flint < Formula
   def install
     ENV.append "CCFLAGS", "-std=c11"
     ENV.append "CXXFLAGS", "-std=c++11"
-    if OS.mac?
-      system "./configure", "--prefix=#{prefix}",
-                            "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                            "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                            "--with-ntl=#{Formula["ntl"].opt_prefix}",
-                            "--disable-tls" # clang doesn't fully support TLS
-    else
-      system "./configure", "--prefix=#{prefix}",
-                            "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                            "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                            "--with-ntl=#{Formula["ntl"].opt_prefix}"
-    end
+    system "./configure", "--prefix=#{prefix}",
+                          "--with-gmp=#{Formula["gmp"].opt_prefix}",
+                          "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+                          "--with-ntl=#{Formula["ntl"].opt_prefix}"
 
     system "make"
     system "make", "install"

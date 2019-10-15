@@ -22,18 +22,10 @@ class Arb < Formula
     end
 
     ENV.append "CCFLAGS", "-std=c11"
-    if OS.mac?
-      system "./configure", "--prefix=#{prefix}",
-                            "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                            "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                            "--with-flint=#{Formula["flint"].opt_prefix}",
-                            "--disable-tls" # clang doesn't fully support TLS
-    else
-      system "./configure", "--prefix=#{prefix}",
-                            "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                            "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                            "--with-flint=#{Formula["flint"].opt_prefix}"
-    end
+    system "./configure", "--prefix=#{prefix}",
+                          "--with-gmp=#{Formula["gmp"].opt_prefix}",
+                          "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+                          "--with-flint=#{Formula["flint"].opt_prefix}"
 
     system "make"
     system "make", "install"
