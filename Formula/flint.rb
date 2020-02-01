@@ -13,9 +13,9 @@ class Flint < Formula
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "ntl"
-  if OS.linux?
-    patch :DATA
-  end
+  #if OS.linux?
+  #  patch :DATA
+  #end
 
   def install
     ENV.append "CCFLAGS", "-std=c11"
