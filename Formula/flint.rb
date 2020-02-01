@@ -13,6 +13,9 @@ class Flint < Formula
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "ntl"
+  if OS.linux?
+    patch :DATA
+  end
 
   def install
     ENV.append "CCFLAGS", "-std=c11"
@@ -61,3 +64,16 @@ class Flint < Formula
     system "./test"
   end
 end
+__END__
+diff --git a/Makefile.subdirs b/Makefile.subdirs
+index ec05fb045..f2d8b376a 100644
+--- a/Makefile.subdirs
++++ b/Makefile.subdirs
+@@ -59,7 +59,7 @@ $(BUILD_DIR)/$(MOD_DIR)_%.o: %.c
+        $(QUIET_CC) $(CC) $(CFLAGS) $(INCS) -c $< -o $@ -MMD -MP -MF "$(BUILD_DIR)/$(MOD_DIR)_$*.d" -MT "$(BUILD_DIR)/$(MOD_DIR)_$*.d" -MT "$@"
+ 
+ $(MOD_LOBJ): $(LOBJS)
+-       $(QUIET_CC) $(CC) $(ABI_FLAG) -Wl,-r $^ -o $@ -nostdlib
++       $(QUIET_CC) $(CC) $(ABI_FLAG) -r $^ -o $@ -nostdlib
+ 
+ -include $(LOBJS:.lo=.d)
