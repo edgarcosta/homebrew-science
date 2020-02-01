@@ -72,10 +72,10 @@ index ec05fb0..f2d8b37 100644
 --- a/Makefile.subdirs
 +++ b/Makefile.subdirs
 @@ -59,7 +59,7 @@ $(BUILD_DIR)/$(MOD_DIR)_%.o: %.c
-        $(QUIET_CC) $(CC) $(CFLAGS) $(INCS) -c $< -o $@ -MMD -MP -MF "$(BUILD_DIR)/$(MOD_DIR)_$*.d" -MT "$(BUILD_DIR)/$(MOD_DIR)_$*.d" -MT "$@"
+ 	$(QUIET_CC) $(CC) $(CFLAGS) $(INCS) -c $< -o $@ -MMD -MP -MF "$(BUILD_DIR)/$(MOD_DIR)_$*.d" -MT "$(BUILD_DIR)/$(MOD_DIR)_$*.d" -MT "$@"
 
  $(MOD_LOBJ): $(LOBJS)
--       $(QUIET_CC) $(CC) $(ABI_FLAG) -Wl,-r $^ -o $@ -nostdlib
-+       $(QUIET_CC) $(CC) $(ABI_FLAG) -r $^ -o $@ -nostdlib
+-	$(QUIET_CC) $(CC) $(ABI_FLAG) -Wl,-r $^ -o $@ -nostdlib
++	$(QUIET_CC) $(CC) $(ABI_FLAG) -r $^ -o $@ -nostdlib
 
  -include $(LOBJS:.lo=.d)
