@@ -3,7 +3,7 @@ class Smalljac < Formula
   homepage "http://math.mit.edu/~drew/"
   # tag "math"
   url "http://math.mit.edu/~drew/smalljac_v4.1.3.tar"
-  sha256 "e826a2636521f28c9672109a7f08d2a220c5596020a5a31dff1fb1c7ecc51194"
+  sha256 "981076c082079b18176ad2c9d7029c233837ec62eae724e9dece92003cbd4bfa"
 
 
   depends_on "gmp"
