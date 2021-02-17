@@ -32,6 +32,7 @@ index 18eeca1..f374d99 100644
                         for ( i = sc->dH+1 ; i <= 1 ; i++ ) mpz_set_ui (sc->H[i], 0);
                         if ( mpz_ws_has_cm (sc->H[1], sc->F[2], sc->H[0], sc->F[1], sc->F[0]) ) sc->special = SMALLJAC_SPECIAL_CM;
                 }
+
 diff --git a/makefile b/makefile
 index 6ea1402..3dd6cfa 100644
 --- a/makefile
