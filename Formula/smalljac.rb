@@ -3,7 +3,7 @@ class Smalljac < Formula
   homepage "http://math.mit.edu/~drew/"
   # tag "math"
   url "http://math.mit.edu/~drew/smalljac_v4.1.3.tar"
-  sha256 "e060254f0937173007f6611f4d2b909654e200c116c96eccce80dea091879340"
+  sha256 "8de2e7ec33c2b703dbfc3644e5751cf5b7e4e8f282d78af955237f2990a6533b"
 
 
   depends_on "gmp"
@@ -19,20 +19,6 @@ class Smalljac < Formula
 
 end
 __END__
-diff --git a/smalljac.c b/smalljac.c
-index 18eeca1..f374d99 100644
---- a/smalljac.c
-+++ b/smalljac.c
-@@ -961,7 +961,7 @@ void smalljac_curve_check_special (smalljac_curve *sc)
-        switch (sc->degree) {
-        case 3:
-        case 4:
--               if ( sc->dF == 3 && mpz_cmp_ui(sc->F[3],1) && sc->dH <= 1 ) {   // CM elliptic curves defined by quartic equations or non-monic cubic equations are not checked
-+               if ( sc->dF == 3 && mpz_cmp_ui(sc->F[3],1)==0 && sc->dH <= 1 ) {        // CM elliptic curves defined by quartic equations or non-monic cubic equations are not checked
-                        for ( i = sc->dH+1 ; i <= 1 ; i++ ) mpz_set_ui (sc->H[i], 0);
-                        if ( mpz_ws_has_cm (sc->H[1], sc->F[2], sc->H[0], sc->F[1], sc->F[0]) ) sc->special = SMALLJAC_SPECIAL_CM;
-                }
-
 diff --git a/makefile b/makefile
 index 6ea1402..3dd6cfa 100644
 --- a/makefile
