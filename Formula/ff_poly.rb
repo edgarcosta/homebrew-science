@@ -2,8 +2,8 @@ class FfPoly < Formula
   desc "fast finite field arithmetic over word size prime fields (up to 61 bits)"
   homepage "http://math.mit.edu/~drew/"
   # tag "math"
-  url "http://math.mit.edu/~drew/ff_poly_v1.2.7.tar"
-  sha256 "686efe53ee138e8be76ec65b1edd0a07e7c661d1ab3a21accb55dee5d019a104"
+  url "https://math.mit.edu/~drew/ff_poly_v1.3.0.tar"
+  sha256 "d2c8b3c2536407f13c54450783af5e4d432b0f073638db7f9db85b21ef775b7f"
 
 
   depends_on "gmp"
