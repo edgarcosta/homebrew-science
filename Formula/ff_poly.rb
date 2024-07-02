@@ -19,34 +19,34 @@ class FfPoly < Formula
 end
 __END__
 diff --git a/makefile b/makefile
-index b058da1..36ab4aa 100644
+index eab61ce..d77c8ff 100644
 --- a/makefile
 +++ b/makefile
 @@ -1,9 +1,9 @@
 -CC = gcc
-+# CC = gcc
++#CC = gcc
  CFLAGS = -O3 -fomit-frame-pointer -funroll-loops -m64 -pedantic -std=gnu99
 -LDFLAGS = -static
 -INCLUDES = -I/usr/local/include
-+LDFLAGS = # -static
-+INCLUDES = # -I/usr/local/include
++LDFLAGS = #-static
++INCLUDES = #-I/usr/local/include
  LIBS = -lgmp -lm
 -INSTALL_ROOT = /usr/local
-+# INSTALL_ROOT = /usr/local
++#INSTALL_ROOT = /usr/local
  
- HEADERS = asm.h ff.h ffmontgomery64.h ff2k.h ffext.h ffpolyfromroots.h ffpolybig.h ffpolysmall.h ffpoly.h cstd.h ntutil.h polyparse.h
+ HEADERS = asm.h ff.h fff.h ffmontgomery64.h ff2k.h ffext.h ffpolyfromroots.h ffpolybig.h ffpolysmall.h ffpoly.h cstd.h ntutil.h polyparse.h
  OBJECTS = ff.o ff2k.o  ffext.o  ffpolyfromroots.o ffpolysmall.o ffpoly_small.o polyparse.o
 @@ -15,9 +15,10 @@ clean:
- 	rm -f libff_poly.a
- 	
+        rm -f libff_poly.a
+        
  install: all
--	cp -v ff_poly.h $(INSTALL_ROOT)/include
- 	mkdir -p $(INSTALL_ROOT)/include/ff_poly
-+	cp -v ff_poly.h $(INSTALL_ROOT)/include
- 	cp -v $(HEADERS) $(INSTALL_ROOT)/include/ff_poly
-+	mkdir -p $(INSTALL_ROOT)/lib
- 	cp -v libff_poly.a $(INSTALL_ROOT)/lib
- 	
+-       cp -v ff_poly.h $(INSTALL_ROOT)/include
+        mkdir -p $(INSTALL_ROOT)/include/ff_poly
++       cp -v ff_poly.h $(INSTALL_ROOT)/include
+        cp -v $(HEADERS) $(INSTALL_ROOT)/include/ff_poly
++       mkdir -p $(INSTALL_ROOT)/lib
+        cp -v libff_poly.a $(INSTALL_ROOT)/lib
+        
  ##### ff_poly library (standard version only supports small polys (degree < 256) and does not depend on zn_poly)
 
 
