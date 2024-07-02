@@ -19,7 +19,7 @@ class FfPoly < Formula
 end
 __END__
 diff --git a/makefile b/makefile
-index eab61ce..d77c8ff 100644
+index eab61ce..9167efd 100644
 --- a/makefile
 +++ b/makefile
 @@ -1,9 +1,9 @@
@@ -36,15 +36,14 @@ index eab61ce..d77c8ff 100644
  
  HEADERS = asm.h ff.h fff.h ffmontgomery64.h ff2k.h ffext.h ffpolyfromroots.h ffpolybig.h ffpolysmall.h ffpoly.h cstd.h ntutil.h polyparse.h
  OBJECTS = ff.o ff2k.o  ffext.o  ffpolyfromroots.o ffpolysmall.o ffpoly_small.o polyparse.o
-@@ -15,8 +15,9 @@ clean:
-        rm -f libff_poly.a
-       
+@@ -15,8 +15,8 @@ clean:
+ 	rm -f libff_poly.a
+ 	
  install: all
--       cp -v ff_poly.h $(INSTALL_ROOT)/include
-+       mkdir -p $(INSTALL_ROOT)/lib
-        mkdir -p $(INSTALL_ROOT)/include/ff_poly
-+       cp -v ff_poly.h $(INSTALL_ROOT)/include
-        cp -v $(HEADERS) $(INSTALL_ROOT)/include/ff_poly
-        cp -v libff_poly.a $(INSTALL_ROOT)/lib
-
++	mkdir -p $(INSTALL_ROOT)/include/ff_poly $(INSTALL_ROOT)/lib
+ 	cp -v ff_poly.h $(INSTALL_ROOT)/include
+-	mkdir -p $(INSTALL_ROOT)/include/ff_poly
+ 	cp -v $(HEADERS) $(INSTALL_ROOT)/include/ff_poly
+ 	cp -v libff_poly.a $(INSTALL_ROOT)/lib
+ 	
 
